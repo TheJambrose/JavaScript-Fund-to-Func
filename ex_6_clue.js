@@ -19,36 +19,34 @@ _.each = function (list, callback) {
 	}
 }
 
-// testerArray = ["test 1", "test 2", "test 3"];
-// testerObject = {value1: "test 1", value2: "test 2", value3: "test 3"};
 
-// _.each(testerArray, console.log);
+function CreateSuspectObjects(name) { 
+  return { 
+    name: name,   
+    color: name.split(' ')[1],   
+    speak() {console.log(`my name is ${name}`);}
+  }; 
+}; 
 
-// _.each(testerObject, console.log);
 
-function CreateSuspectObjects(name) {
-  return {
-    name: name,
-    color: name.split(' ')[1], 
-      //should be 1, not 2. Previous slide was a trick!
-    speak() { 
-      console.log("my name is ", name); 
-    },
-  };
-};
-
-var suspects = ['Miss Scarlet', 'Colonel Mustard', 'Mr. White'];
+var suspects = ['Miss Scarlet', 'Colonel Mustard', 'Mr. White']; 
 
 var suspectsList = [];
 
-//create the Suspect Objects
-
-_.each(suspects, function() {
-	suspectsList.push(CreateSuspectObjects(suspects));
-})
-
+// Use your _.each to replicate this for loop.
 
 // for(var i = 0; i < suspects.length; i++){ 
 //   suspectsList.push(CreateSuspectObjects(suspects[i])); 
-//   console.log("i ran");
 // }
+
+
+
+_.each(suspects, function(suspects) {
+	suspectsList.push(CreateSuspectObjects(suspects));
+});
+
+
+//confirm array of objects exist by having each one call their speak() method.
+_.each(suspectsList, function(suspectsList) {
+	suspectsList.speak();
+});
